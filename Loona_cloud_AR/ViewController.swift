@@ -58,6 +58,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
      
         // Container
         
+        guard let container = sceneView.scene.rootNode.childNode(withName: "container", recursively: false) else { return }
+        
+        container.removeFromParentNode()
+        node.addChildNode(container)
+        container.isHidden = false
+        
         
     }
 
