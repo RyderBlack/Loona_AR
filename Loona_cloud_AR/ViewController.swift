@@ -34,7 +34,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARImageTrackingConfiguration()
+        
+        
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -49,14 +51,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: - ARSCNViewDelegate
     
-/*
+
     // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard anchor is ARImageAnchor else { return }
      
-        return node
+        // Container
+        
+        
     }
-*/
+
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
